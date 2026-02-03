@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  email        String   @unique
+  name         String?
+  password     String?  // For traditional auth
+  image       String?   // Profile picture
+  projects    Project[]
+  tasks       Task[]
+
+  @@map("users")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String?
+  status      String   @default("active") // active, archived, deleted
+  users       User[]
+  tasks       Task[]
+  aiAgents    AIAgent[]
+
+  @@map("projects")
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String?
+  status      String   @default("todo") // todo, in_progress, done
+  priority    String   @default("medium") // low, medium, high, critical
+  dueDate     DateTime?
+  assignedTo  User?    @relation(fields: [assignedToId], references: [id])
+  assignedToId String?
+  project     Project  @relation(fields: [projectId], references: [id])
+  projectId   String
+  aiAgent     AIAgent? @relation(fields: [aiAgentId], references: [id])
+  aiAgentId   String?
+
+  @@map("tasks")
+}
+
+model AIAgent {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String
+  description   String?
+  provider      String   // openai, anthropic, custom, etc.
+  apiKey        String?
+  config        Json?    // Additional configuration as JSON
+  isActive      Boolean  @default(true)
+  tasks         Task[]
+  projects      Project[]
+
+  @@map("ai_agents")
+}
+
+model Workflow {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  description String?
+  trigger     String   // manual, timer, webhook, etc.
+  conditions  Json?    // Conditions as JSON
+  actions     Json?    // Actions as JSON
+  isActive    Boolean  @default(true)
+  project     Project  @relation(fields: [projectId], references: [id])
+  projectId   String
+
+  @@map("workflows")
+}
+
+model Analytics {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  metric      String   // task_completion_rate, agent_efficiency, etc.
+  value       Float
+  metadata    Json?    // Additional data as JSON
+  project     Project? @relation(fields: [projectId], references: [id])
+  projectId   String?
+
+  @@map("analytics")
+}
