@@ -1,84 +1,84 @@
 # ClawList
 
-An AI Agent时代的项目管理软件 (AI Agent Era Project Management Software)
+AI Agent Era Project Management Software
 
-## 项目概述
+## Project Overview
 
-ClawList 是一款专为 AI Agent 时代设计的现代化项目管理工具。它结合了传统项目管理的最佳实践与 AI Agent 协作的新模式，帮助团队更高效地协作和管理复杂的 AI 驱动项目。
+ClawList is a modern project management tool designed specifically for the AI Agent era. It combines best practices of traditional project management with new models of AI Agent collaboration, helping teams collaborate more efficiently and manage complex AI-driven projects.
 
-## 核心特性
+## Core Features
 
-- **AI Agent 集成**: 无缝集成各种 AI Agent，支持任务分配和自动执行
-- **智能任务管理**: 基于 AI 的任务优先级排序和资源分配
-- **实时协作**: 实时同步的项目看板和团队协作功能
-- **数据分析**: 内置数据分析工具，提供项目进度和效率洞察
-- **灵活定制**: 高度可定制的工作流和界面
+- **AI Agent Integration**: Seamless integration with various AI Agents, supporting task assignment and automatic execution
+- **Intelligent Task Management**: AI-powered task prioritization and resource allocation
+- **Real-time Collaboration**: Real-time synchronized project boards and team collaboration features
+- **Data Analysis**: Built-in data analysis tools providing project progress and efficiency insights
+- **Flexible Customization**: Highly customizable workflows and interfaces
 
-## 技术栈
+## Tech Stack
 
-- **前端**: Next.js 15, React
-- **样式**: Tailwind CSS v4
-- **后端**: Node.js
-- **数据库**: PostgreSQL
-- **部署**: Docker 容器化部署
+- **Frontend**: Next.js 15, React
+- **Styling**: Tailwind CSS v4
+- **Backend**: Node.js
+- **Database**: PostgreSQL
+- **Deployment**: Docker containerization
 
-## 安装要求
+## Requirements
 
 - Node.js 20+
 - PostgreSQL 14+
-- Docker (可选，用于容器化部署)
+- Docker (optional, for containerized deployment)
 
-## 快速开始
+## Quick Start
 
-1. 克隆项目:
+1. Clone the project:
    ```bash
    git clone <repository-url>
    cd clawlist
    ```
 
-2. 安装依赖:
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. 配置环境变量:
+3. Configure environment variables:
    ```bash
    cp .env.example .env.local
-   # 编辑 .env.local 文件以配置您的环境变量
+   # Edit the .env.local file to configure your environment variables
    ```
 
-4. 初始化数据库:
+4. Initialize the database:
    ```bash
    npx prisma migrate dev
    ```
 
-5. 运行开发服务器:
+5. Run the development server:
    ```bash
    npm run dev
    ```
 
-## 架构设计
+## Architecture Design
 
-ClawList 采用了模块化的架构设计，便于扩展和维护:
+ClawList adopts a modular architecture design for easy expansion and maintenance:
 
-- **UI 层**: Next.js + Tailwind CSS 提供响应式用户界面
-- **业务逻辑层**: TypeScript 实现的业务逻辑和服务层
-- **数据层**: PostgreSQL 数据库配合 Prisma ORM
-- **AI 集成层**: 统一的 AI Agent 接口，支持多种 AI 服务
+- **UI Layer**: Next.js + Tailwind CSS provides responsive user interface
+- **Business Logic Layer**: TypeScript implementation of business logic and service layers
+- **Data Layer**: PostgreSQL database with Prisma ORM
+- **AI Integration Layer**: Unified AI Agent interface supporting multiple AI services
 
-## AI Agent 集成
+## AI Agent Integration
 
-ClawList 提供了专门的 AI Agent 管理界面，允许用户:
+ClawList provides a dedicated AI Agent management interface, allowing users to:
 
-- 添加和配置不同的 AI Agent
-- 分配任务给特定的 AI Agent
-- 监控 AI Agent 的执行状态和性能
-- 设置自动化工作流
+- Add and configure different AI Agents
+- Assign tasks to specific AI Agents
+- Monitor AI Agent execution status and performance
+- Set up automated workflows
 
-## 贡献指南
+## Contributing
 
-我们欢迎社区贡献！请参考 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详细信息。
+We welcome community contributions! Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for detailed information.
 
-## 许可证
+## License
 
 MIT License
